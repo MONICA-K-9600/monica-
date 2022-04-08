@@ -1,0 +1,58 @@
+<div class="root" style="display: flex;flex-direction: column;height: 100%;margin: 20px;">
+    <div class="navbar-brand">
+        <div class="navbar-item">
+            <p class="app-name" style="font-size: 28px;font-weight: bold;float: left;">
+                <img src="../../assets/icons8-username-48.png" class="user" alt="icon" style="width: 30px;margin-right: 10PX;height: 30px;" />iamneo.ai Talent Center</p>
+            <div class=" app-btn ">
+                <img src="../../assets/icons8-search-30.png" alt="icon" style="height: 15px; width:15px; padding-right:5px " />
+                <input type="text" name="search" [(ngModel)]="searchInput" placeholder="Search" style="box-shadow: 0px 1px gray;border: none; margin-right: 20px;"><br>
+                <article>
+                    <ul>
+                        <li *ngFor="let data of datas | search: searchInput">{{data}} </li>
+                    </ul>
+                </article><button class=" addnew " style="background-color: #095fac;text-align: center;width: 75px;margin-right: 20px;color: white;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Add New</button>
+                <img src="../../assets/icons8-gift-50.png " alt="icon" style="height: 15px; width:15px; padding-right:20px; margin-right: 5px; " />
+                <img src=" ../../assets/icons8-user-30.png " alt="icon" style="height: 15px; width:15px; padding-right:5px " />
+            </div>
+        </div>
+    </div>
+
+    <div class="board" style="display: flex;flex-direction: column;flex-grow: 1;min-width: 0;min-height: 0;">
+        <div class="board-bar " style="background-color: #f8f5eb;">
+            <div class="board-name ">
+                <img src="../../assets/icons8-suitcase-64.png " alt="icon" /> Jobs <img src=" ../../assets/icons8-chevron-right-30.png " alt="icon" class="arrow " style="width: 10px;height: 10px;" /> Full-stack Engineer
+                <button type="search " class="details " style="background-color: white;border-radius: 3px;margin: 10PX;padding: 5px;">View Job details</button>
+            </div>
+            <div class="border-btns " style="padding: 10px;background-color: #f8f5eb;
+            float: right;">
+                <button class="canditate ">Add Canditates <img src=" ../../assets/icons8-expand-arrow-24.png " alt="icon" /></button> <button class="publish " style="background-color: navy;color: white">
+                <img src="../../assets/icons8-paint-palette-50.png " alt="icon" >Published <img src="../../assets/icons8-expand-arrow-24.png " alt="icon" /></button>
+            </div>
+        </div>
+        <div class="board-content ">
+            All Canditates - <button class="sort " style="padding: 5px;background-color: #faf8f8;border: none;">Active (20) <img src="../../assets/icons8-expand-arrow-24.png " alt="icon"> </button>sort by
+            <button class="sort " style="padding: 5px;background-color: #faf8f8;border: none">Last Updated <img src="../../assets/icons8-expand-arrow-24.png " alt="icon"></button>
+            <div class="board-model " style="float: right;padding: 5px;">
+                <img src="../../assets/icons8-menu-rounded-24.png " alt="icon" class="icons " style="margin: 10px;" />
+                <img src=" ../../assets/icons8-funnel-50.png " alt="icon" class="icons " style="margin: 10px;" />
+                <img src="../../assets/icons8-upload-48.png " alt="icon" class="icons " style="margin: 10px;" /> </div>
+        </div>
+    </div>
+    <div class="board-wrapper ">
+        <div class="board-columns " style="display: flex;flex-grow: 1;" cdkDropListGroup>
+            <div class="board-column " *ngFor="let column of board.columns ">
+                <div class="column-title ">
+                    {{ column.name }}
+                </div>
+                <div class="tasks-container " styles="flex-grow: 1;overflow-y: auto;" cdkDropList [cdkDropListData]="column.tasks " (cdkDropListDropped)="drop($event) ">
+                    <div class="task " *ngFor="let item of column.tasks " cdkDrag>
+                        <div class="task-name " style="padding: 5px;color: blue;border-left: 4px solid #4CAF50;">{{ item }} <img src="../../assets/icons8-users-settings-32.png " alt="icon">
+                        </div>
+                        <div class="task-icon " style=" padding-top: 10px;"><img src="../../assets/icons8-menu-vertical-50.png " style="float:right " alt="icon"><img src="../../assets/icons8-user-30.png " style="float:right " alt="icon"> <img src="../../assets/icons8-star-48.png " alt="icon"><img src="../../assets/icons8-star-48.png "
+                                alt="icon"><img src="../../assets/icons8-star-48.png " alt="icon"><img src="../../assets/icons8-star-48.png " alt="icon"><img src="../../assets/icons8-star-48.png " alt="icon"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
